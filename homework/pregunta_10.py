@@ -4,6 +4,14 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 `tbl2.tsv`. En este laboratorio solo puede utilizar las funciones y 
 librerias de pandas para resolver las preguntas.
 """
+import pandas as pd
+from pathlib import Path
+
+# Path files
+tbl0 = pd.read_csv(Path(__file__).resolve().parents[1].joinpath("./files/input/tbl0.tsv"), sep='\t')
+tbl1 = pd.read_csv(Path(__file__).resolve().parents[1].joinpath("./files/input/tbl1.tsv"), sep='\t')
+tbl2 = pd.read_csv(Path(__file__).resolve().parents[1].joinpath("./files/input/tbl2.tsv"), sep='\t')
+
 
 
 def pregunta_10():
@@ -20,3 +28,6 @@ def pregunta_10():
     D                   1:2:3:5:5:7
     E   1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
+    agg_funct = lambda x: str(sorted(list(x))).replace(", ", ":").replace("[", "").replace("]", "")
+    unique_df = tbl0[["c1", "c2"]].groupby("c1").agg(agg_funct)
+    return unique_df

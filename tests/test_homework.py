@@ -1,6 +1,13 @@
 """Autograding script."""
 
-import pandas as pd  # type: ignore
+import pandas as pd
+from pathlib import Path
+
+# Path files
+tbl0 = pd.read_csv(Path(__file__).resolve().parents[1].joinpath("./files/input/tbl0.tsv"), sep='\t')
+tbl1 = pd.read_csv(Path(__file__).resolve().parents[1].joinpath("./files/input/tbl1.tsv"), sep='\t')
+tbl2 = pd.read_csv(Path(__file__).resolve().parents[1].joinpath("./files/input/tbl2.tsv"), sep='\t')
+  # type: ignore
 
 from homework import (
     pregunta_01,
